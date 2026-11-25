@@ -1,0 +1,16 @@
+{
+  "name": "ricky",
+  "version": "2.0.0",
+  "description": "Ricky / JARVIS — Desktop AI Companion powered by Gemini Live",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "postinstall": "node -e \"try{require('fs').copyFileSync('node_modules/mermaid/dist/mermaid.min.js','mermaid.min.js')}catch(e){}\""
+  },
+  "dependencies": {
+    "mermaid": "^11.4.0"
+  },
+  "devDependencies": {
+    "electron": "^34.0.0"
+  }
+}

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; connect-src 'self' wss://generativelanguage.googleapis.com https://generativelanguage.googleapis.com https://api.exa.ai; img-src 'self' data: file:; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline';">
+  <title>JARVIS</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app" id="appRoot">
+    <!-- Left: JARVIS Face -->
+    <section class="face-panel" id="facePanel">
+      <div class="face-wrapper">
+        <div class="ricky-face" id="rickyFace">
+          <div class="eyes">
+            <div class="eye left"><div class="pupil"></div></div>
+            <div class="eye right"><div class="pupil"></div></div>
+          </div>
+          <svg class="mouth" viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg">
+            <path id="mouthPath" d="M10,20 Q60,38 110,20" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="square"/>
+          </svg>
+        </div>
+        <p class="status-label" id="statusLabel">Initializing…</p>
+        <p class="transcript" id="transcript"></p>
+      </div>
+
+      <nav class="control-bar">
+        <button class="ctrl-btn" id="btnMic" type="button" aria-pressed="true">Toggle Microphone</button>
+        <button class="ctrl-btn" id="btnComputer" type="button" aria-pressed="false">Computer Control Mode</button>
+        <button class="ctrl-btn" id="btnCapabilities" type="button">Display Capabilities</button>
+      </nav>
+    </section>
+
+    <!-- Right: Artifacts Panel -->
+    <section class="artifacts-panel" id="artifactsPanel">
+      <header class="artifacts-header">
+        <h2>Artifacts</h2>
+        <span class="connection-dot" id="connectionDot" title="Disconnected"></span>
+      </header>
+
+      <div class="artifacts-scroll" id="artifactsScroll">
+        <div class="image-masonry" id="imageMasonry"></div>
+        <div class="artifacts-feed" id="artifactsContent">
+          <div class="artifact-block artifact-empty">
+            <p>JARVIS outputs appear here — search results, diagrams, notes, and generated assets.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Lightbox -->
+  <div class="lightbox hidden" id="lightbox">
+    <div class="lightbox-backdrop" id="lightboxBackdrop"></div>
+    <div class="lightbox-frame">
+      <button class="lightbox-close" id="lightboxClose" type="button" aria-label="Close">×</button>
+      <img class="lightbox-img" id="lightboxImg" alt="">
+      <p class="lightbox-caption" id="lightboxCaption"></p>
+      <p class="lightbox-hint">Voice-edit while open — e.g. "give him blue sunglasses"</p>
+    </div>
+  </div>
+
+  <!-- Orb restore (visible in orb mode) -->
+  <button class="orb-restore hidden" id="orbRestore" type="button" aria-label="Restore panel">⤢</button>
+
+  <script src="mermaid.min.js"></script>
+  <script src="renderer.js"></script>
+</body>
+</html>
